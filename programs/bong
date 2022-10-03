@@ -1,3 +1,0 @@
-#!/usr/bin/bash
-FILE_NAME="bong.wav"
-aplay -q "$HOME/.local/share/$FILE_NAME"
