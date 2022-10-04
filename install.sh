@@ -9,15 +9,18 @@ fi
 
 # symlinking each file in the sounds directory
 
-cp "$PWD/bruh" "$HOME/.local/bin/bruh"
-echo "copied bruh into $HOME/.local/bin"
-FILES="$PWD/sounds/"*
-for f in $FILES do
-  FILEPATH=$HOME/.local/bin/$(echo $f | awk -F/ '{print $NF}' |  awk -F. '{print $1}')
-   if [  -e $FILEPATH ]; then 
-        rm $FILEPATH # file exists, remove it to prevent failure for ln
-   fi
-  ln -s "$HOME/.local/bin/bruh" $FILEPATH
+cp "$PWD/soundboard" "$DEST_DIR/bin/soundboard"
+echo "copied soundboard into $DEST_DIR/bin"
+FILES="sounds/*"
+for F in $FILES; do
+  F_ABSOLUTE="$PWD/$F"
+  FILENAME=$(basename "$F_ABSOLUTE" .wav)
+  FILEPATH="$HOME/.local/bin/$FILENAME"
+  if [ -f "$FILEPATH" ]; then 
+        rm "$FILEPATH" # file exists, remove it to prevent failure for ln
+  fi
+  ln -s "$HOME/.local/bin/soundboard" "$FILEPATH"
+  chmod +x "$FILEPATH"
 done
 
 cp "$PWD/sounds/"*  "$HOME/.local/share"
