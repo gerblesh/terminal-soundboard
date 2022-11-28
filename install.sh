@@ -23,6 +23,11 @@ for F in $FILES; do
   chmod +x "$FILEPATH"
 done
 
-cp "$PWD/sounds/"*  "$HOME/.local/share"
+if [ -d "$HOME/.local/share/soundboard" ]; then
+	rm "$HOME/.local/share/soundboard"
+fi
+
+mkdir  "$HOME/.local/share/soundboard"
+cp "$PWD/sounds/"*  "$HOME/.local/share/soundboard"
 echo "symlinked sound programs to $HOME/.local/bin"
-echo "copied sounds to $HOME/.local/share"
+echo "copied sounds to $HOME/.local/share/soundboard"
