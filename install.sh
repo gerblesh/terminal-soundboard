@@ -24,7 +24,7 @@ for F in $FILES; do
 done
 
 if [ -d "$HOME/.local/share/soundboard" ]; then
-	rm "$HOME/.local/share/soundboard"
+	rm -rf "$HOME/.local/share/soundboard"
 fi
 
 mkdir  "$HOME/.local/share/soundboard"
